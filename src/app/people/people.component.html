@@ -1,3 +1,35 @@
-<p>
-  people works!
-</p>
+<a routerLink="/person" class="btn btn-success btn-sm">Registro</a>
+<br /><br />
+<ul class="list-group panel-shadow">
+  <table class="table table-bordered">
+    <thead>
+      <tr >
+        <th class="col-md-1"></th>
+        <th class="col-md-1"></th>
+        <th class="col-md-2">Nome</th>
+        <th class="col-md-2">Doc. Identificação</th>
+        <th class="col-md-2">Endereço</th>
+        <th class="col-md-2">Número</th>
+        <th class="col-md-2">Complemento</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let person of listPeople">
+      <tr>
+        <td>
+          <button type="button" class="btn btn-danger btn-xs" (click)="deletePerson(person.id)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+        </td>
+        <td>
+          <a type="button" class="btn btn-primary btn-xs"
+             [routerLink]="['/person', person.id]"><i class="glyphicon glyphicon-pencil"></i></a>
+        </td>
+        <td>{{person.name}}</td>
+        <td>{{person.identificationDocument}}</td>
+        <td>{{person.address.name}}</td>
+        <td>{{person.address.number}}</td>
+        <td>{{person.address.complement}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ul>

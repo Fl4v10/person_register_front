@@ -6,20 +6,31 @@ import { AppComponent } from './app.component';
 import { PersonComponent } from './person/person.component';
 import { AppRoutingModule } from './/app-routing.module';
 
-import { PersonService } from './person/person.service';
+import { TabsModule } from 'ngx-bootstrap';
+import { ChartComponent } from './chart/chart.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { PersonService } from './services/person.service';
 import { PeopleComponent } from './people/people.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonComponent,
+    ChartComponent,
     PeopleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TabsModule.forRoot()
   ],
-  providers: [PersonService],
+  providers: [
+    PersonService,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

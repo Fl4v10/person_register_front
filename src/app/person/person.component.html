@@ -1,1 +1,101 @@
-teste
+<div class="container col-md-9">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label for="Name">Nome</label>
+      <div class="inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input type="text" class="form-control" 
+              name="Name" id="Name" placeholder="Nome" ngModel required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="IdentificationDocument">Documento de Identificação</label>
+      <div class="inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input type="text" class="form-control" name="IdentificationDocument" 
+              id="IdentificationDocument" placeholder="RG, CPF ou Passaporte" ngModel required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="Name">Data de Nascimento</label>
+          <div class="inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </span>
+              <input type="date" name="BirthDate" id="BirthDate" min="1950-01-01" class="form-control" ngModel required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <label for="Gender">Genero</label>
+          <br/>
+          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="true" ngModel>
+          <label class="form-check-label" for="Gender">
+            Masculino
+          </label>
+          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="false" ngModel>
+          <label class="form-check-label" for="Gender">
+            Feminino
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="address">Endereço</label>
+          <div class="inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-home"></i>
+              </span>
+              <input class="form-control" type="text" name="Address" id="Address" placeholder="Rua FooBoo..." ngModel>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-group">
+            <label for="Number">Número</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="Number" id="Number" placeholder="32" class="form-control" type="text" ngModel>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+              <label for="Complement">Complemento</label>
+              <div class="inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-home"></i>
+                  </span>
+                  <input id="Complement" name="Complement" placeholder="Apt. 411" class="form-control" type="text" ngModel>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <br/>
+    <a class="btn btn-info" (click)="editForm()">Edit</a>
+    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-save"></span> Salvar</button>
+  </form>
+</div>
