@@ -2,7 +2,7 @@ import { AddressModel } from './address.model';
 
 export class PersonModel {
     Id: number;
-    BirthDate: Date;
+    BirthDate: string;
     Age: number;
     Name: string;
     IdentificationDocument: string;

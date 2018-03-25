@@ -27,13 +27,14 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="Name">Data de Nascimento</label>
+          <label for="birthDate">Data de Nascimento</label>
           <div class="inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar"></i>
               </span>
-              <input type="date" name="BirthDate" id="BirthDate" min="1950-01-01" value="{{person.birthDate | date: 'dd/MM/yyyy'}}" class="form-control" [(ngModel)]="person.birthDate" required>
+              <input type="date" name="BirthDate" id="BirthDate" min="1950-01-01" 
+                  class="form-control" [(ngModel)]="person.birthDate" required>
             </div>
           </div>
         </div>

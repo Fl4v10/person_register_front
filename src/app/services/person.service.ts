@@ -29,6 +29,7 @@ export class PersonService {
 
   insertPerson(form: any) {
     const person: PersonModel = this.createBody(form);
+    debugger
     return this._http.post(this.url, person, { headers: this.createHeaders() });
   }
 

@@ -58,6 +58,7 @@ export class PersonComponent implements OnInit {
     this._service.getPerson(id).subscribe(data => {
       this.person = data ? data as PersonModel : new PersonModel({});
       this.person.address = this.person.address ? this.person.address : new AddressModel({});
+      this.person.birthDate = this.person.birthDate = new Date(this.person.birthDate).toISOString().split('T')[0];
     });
   }
 }
