@@ -32,8 +32,8 @@ export class PersonService {
     return this._http.post(this.url, person, { headers: this.createHeaders() });
   }
 
-  updatePerson(person: any) {
-    return this._http.post(this.url, person);
+  updatePerson(person: PersonModel) {
+    return this._http.put(this.url, person, { headers: this.createHeaders() });
   }
 
   createBody(model: any): PersonModel {

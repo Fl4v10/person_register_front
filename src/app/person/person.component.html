@@ -8,7 +8,7 @@
             <i class="glyphicon glyphicon-user"></i>
           </span>
           <input type="text" class="form-control" 
-              name="Name" id="Name" placeholder="Nome" ngModel required>
+              name="Name" id="Name" placeholder="Nome" [(ngModel)]="person.name" required>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
             <i class="glyphicon glyphicon-user"></i>
           </span>
           <input type="text" class="form-control" name="IdentificationDocument" 
-              id="IdentificationDocument" placeholder="RG, CPF ou Passaporte" ngModel required>
+              id="IdentificationDocument" placeholder="RG, CPF ou Passaporte" [(ngModel)]="person.identificationDocument" required>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar"></i>
               </span>
-              <input type="date" name="BirthDate" id="BirthDate" min="1950-01-01" class="form-control" ngModel required>
+              <input type="date" name="BirthDate" id="BirthDate" min="1950-01-01" value="{{person.birthDate | date: 'dd/MM/yyyy'}}" class="form-control" [(ngModel)]="person.birthDate" required>
             </div>
           </div>
         </div>
@@ -42,11 +42,11 @@
         <div class="form-check">
           <label for="Gender">Genero</label>
           <br/>
-          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="true" ngModel>
+          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="true" [(ngModel)]="person.gender" checked>
           <label class="form-check-label" for="Gender">
             Masculino
           </label>
-          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="false" ngModel>
+          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="false" [(ngModel)]="person.gender">
           <label class="form-check-label" for="Gender">
             Feminino
           </label>
@@ -62,7 +62,7 @@
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-home"></i>
               </span>
-              <input class="form-control" type="text" name="Address" id="Address" placeholder="Rua FooBoo..." ngModel>
+              <input class="form-control" type="text" name="Address" id="Address" placeholder="Rua FooBoo..." [(ngModel)]="person.address.name">
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
                 <span class="input-group-addon">
                   <i class="glyphicon glyphicon-home"></i>
                 </span>
-                <input name="Number" id="Number" placeholder="32" class="form-control" type="text" ngModel>
+                <input name="Number" id="Number" placeholder="32" class="form-control" type="text" [(ngModel)]="person.address.number">
               </div>
             </div>
           </div>
@@ -88,14 +88,14 @@
                   <span class="input-group-addon">
                     <i class="glyphicon glyphicon-home"></i>
                   </span>
-                  <input id="Complement" name="Complement" placeholder="Apt. 411" class="form-control" type="text" ngModel>
+                  <input id="Complement" name="Complement" placeholder="Apt. 411" class="form-control" type="text" [(ngModel)]="person.address.complement">
                 </div>
               </div>
             </div>
           </div>
     </div>
     <br/>
-    <a class="btn btn-info" (click)="editForm()">Edit</a>
+    <a class="btn btn-danger" (click)="clearForm()">Cancel</a>
     <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-save"></span> Salvar</button>
   </form>
 </div>

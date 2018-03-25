@@ -10,9 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PeopleComponent implements OnInit {
 
-  listPeople: PersonModel[];
+  list: PersonModel[];
   person: PersonModel;
-  pageSize = 10;
+  pageSize = 20;
 
   constructor(
     private personService: PersonService) { }
@@ -24,7 +24,10 @@ export class PeopleComponent implements OnInit {
   getPeople() {
     return this.personService.getPeople(null, this.pageSize)
       .subscribe(data => {
-        this.listPeople = data as PersonModel[];
+        this.list = data as PersonModel[];
+        for (let i = 0; i < this.list.length; i++) {
+          this.list[i].Age = this.calculateAge(new Date(data[i].birthDate));
+        }
       });
   }
 
@@ -34,4 +37,10 @@ export class PeopleComponent implements OnInit {
     });
   }
 
+  private calculateAge(bday): number {
+    if (bday) {
+      const timeDiff = Math.abs(Date.now() - bday);
+      return Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    }
+  }
 }

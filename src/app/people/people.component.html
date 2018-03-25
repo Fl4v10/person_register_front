@@ -5,26 +5,27 @@
     <thead>
       <tr >
         <th class="col-md-1"></th>
-        <th class="col-md-1"></th>
         <th class="col-md-2">Nome</th>
+        <th class="col-md-1">Idade</th>
+        <th class="col-md-1">Gênero</th>
         <th class="col-md-2">Doc. Identificação</th>
         <th class="col-md-2">Endereço</th>
-        <th class="col-md-2">Número</th>
-        <th class="col-md-2">Complemento</th>
+        <th class="col-md-1">Número</th>
+        <th class="col-md-1">Complemento</th>
       </tr>
     </thead>
-    <tbody *ngFor="let person of listPeople">
+    <tbody *ngFor="let person of list">
       <tr>
         <td>
           <button type="button" class="btn btn-danger btn-xs" (click)="deletePerson(person.id)">
             <i class="glyphicon glyphicon-trash"></i>
           </button>
-        </td>
-        <td>
           <a type="button" class="btn btn-primary btn-xs"
              [routerLink]="['/person', person.id]"><i class="glyphicon glyphicon-pencil"></i></a>
         </td>
         <td>{{person.name}}</td>
+        <td>{{person.Age}}</td>
+        <td><p [hidden]="!person.gender">Masculino</p><p [hidden]="person.gender">Feminino</p></td>
         <td>{{person.identificationDocument}}</td>
         <td>{{person.address.name}}</td>
         <td>{{person.address.number}}</td>

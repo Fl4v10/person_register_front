@@ -7,7 +7,7 @@ export class AddressModel {
     constructor(p: any) {
         this.Id = p.Id ? p.Id : 0;
         this.name = p.name ? p.name : '';
-        this.number = p.number ? p.number : 0;
+        this.number = p.number ? p.number.toInt32(0) : 0;
         this.complement = p.complement ? p.complement : '';
     }
 }
