@@ -6,26 +6,24 @@ import { AppComponent } from './app.component';
 import { PersonComponent } from './person/person.component';
 import { AppRoutingModule } from './/app-routing.module';
 
-import { TabsModule } from 'ngx-bootstrap';
-import { ChartComponent } from './chart/chart.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PersonService } from './services/person.service';
 import { PeopleComponent } from './people/people.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonComponent,
-    ChartComponent,
-    PeopleComponent
+    PeopleComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    TabsModule.forRoot()
+    HttpClientModule
   ],
   providers: [
     PersonService,
