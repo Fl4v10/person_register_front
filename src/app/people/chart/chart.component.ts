@@ -10,12 +10,42 @@ export class ChartComponent implements OnInit {
   @ViewChild('chartTarget') chartTarget: ElementRef;
   @Input() data;
 
-  chart = new Chart({
+  rangeOfage = new Chart({
     chart: {
       type: 'pie'
     },
     title: {
       text: 'Relatório por gênero'
+    },
+    credits: {
+      enabled: false
+    },
+    series: [{
+      name: 'Nº de indivíduos',
+      data: [{
+        name: 'Mulheres',
+        y: 4
+      }, {
+        name: 'Homens',
+        y: 6
+      }
+      , {
+        name: 'Gays',
+        y: 3
+      },
+      {
+        name: 'Não binare',
+        y: 3
+      }]
+    }]
+  });
+
+  chart = new Chart({
+    chart: {
+      type: 'pie'
+    },
+    title: {
+      text: 'Relatório por sexo'
     },
     credits: {
       enabled: false
