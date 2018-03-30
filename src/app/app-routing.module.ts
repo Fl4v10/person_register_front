@@ -5,10 +5,10 @@ import { PeopleComponent } from './people/people.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'person/:id', component: PersonComponent },
-  { path: 'person', component: PersonComponent },
+  { path: '',   redirectTo: '/people', pathMatch: 'full' },
   { path: 'people', component: PeopleComponent },
-  { path: '',   redirectTo: '/person', pathMatch: 'full' },
+  { path: 'person', component: PersonComponent },
+  { path: 'person/:id', component: PersonComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

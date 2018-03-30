@@ -1,6 +1,21 @@
 <app-chart [data]="list"></app-chart>
-<a routerLink="/person" class="btn btn-success btn-sm">Registro</a>
-<br /><br />
+<form #person="ngForm" (ngSubmit)="onSubmit(person)">
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input type="text" class="form-control" name="name"
+           id="name" placeholder="Nome" ngModel required>
+    <div class="row">
+    </div>
+    <br />
+    <div class="span">
+      <button type="button" class="btn btn-primary btn-xs" (click)="searchPeople(person)"><span class="glyphicon glyphicon-search"></span>Pesquisar
+      </button>
+      <a routerLink="/person" class="btn btn-success btn-sm">Registro</a>
+    </div>
+  </div>
+</form>
+
+<br />
 <ul class="list-group panel-shadow">
   <table class="table table-bordered">
     <thead>
@@ -15,7 +30,7 @@
         <th class="col-md-1">Complemento</th>
       </tr>
     </thead>
-    <tbody *ngFor="let person of list">
+    <tbody *ngFor="let person of list | personFilter : filterArg">
       <tr>
         <td>
           <button type="button" class="btn btn-danger btn-xs" (click)="deletePerson(person.id)">
@@ -25,7 +40,7 @@
              [routerLink]="['/person', person.id]"><i class="glyphicon glyphicon-pencil"></i></a>
         </td>
         <td>{{person.name}}</td>
-        <td>{{person.Age}}</td>
+        <td>{{person.age}}</td>
         <td><p [hidden]="!person.gender">Masculino</p><p [hidden]="person.gender">Feminino</p></td>
         <td>{{person.identificationDocument}}</td>
         <td>{{person.address.name}}</td>

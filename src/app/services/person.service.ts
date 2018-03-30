@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PersonService {
   private url = environment.personAPI;
+  person = new PersonModel({});
 
   constructor(private _http: HttpClient) {
   }
@@ -17,8 +18,8 @@ export class PersonService {
     return this._http.get(this.url + '/' + id);
   }
 
-  getPeople(search: string, pageSize: Number) {
-    const url = this.url + '?search=' + search + '&pageSize=' + pageSize;
+  getPeople(search: string) {
+    const url = this.url + '?search=' + search;
     return this._http.get(url, { headers: this.createHeaders() });
   }
 
@@ -38,10 +39,10 @@ export class PersonService {
 
   createBody(model: any): PersonModel {
     const person = new PersonModel(model);
-    person.Address = new AddressModel({});
-    person.Address.number = model.Number;
-    person.Address.name = model.Address;
-    person.Address.complement =  model.Complement;
+    person.address = new AddressModel({});
+    person.address.number = model.Number;
+    person.address.name = model.Address;
+    person.address.complement =  model.Complement;
 
     return person;
   }

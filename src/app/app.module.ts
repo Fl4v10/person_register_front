@@ -13,6 +13,7 @@ import { PeopleComponent } from './people/people.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ChartComponent } from './people/chart/chart.component';
 import { ChartModule } from 'angular-highcharts';
+import { PersonFilter } from './people/person-array.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ChartModule } from 'angular-highcharts';
     PersonComponent,
     PeopleComponent,
     ChartComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PersonFilter
   ],
   imports: [
     BrowserModule,

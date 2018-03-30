@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonService } from '../services/person.service';
 import { PersonModel } from '../models/person.model';
 import { ActivatedRoute } from '@angular/router';
+import { PersonFilter } from './person-array.pipe';
 
 @Component({
   selector: 'app-people',
@@ -9,10 +10,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit {
-
   list: PersonModel[];
   person: PersonModel;
-  pageSize = 20;
+  filterArg: string;
 
   constructor(
     private personService: PersonService) { }
@@ -22,11 +22,11 @@ export class PeopleComponent implements OnInit {
   }
 
   getPeople() {
-    return this.personService.getPeople(null, this.pageSize)
+    return this.personService.getPeople(null)
       .subscribe(data => {
         this.list = data as PersonModel[];
         for (let i = 0; i < this.list.length; i++) {
-          this.list[i].Age = this.calculateAge(new Date(data[i].birthDate));
+          this.list[i].age = this.calculateAge(new Date(data[i].birthDate));
         }
       });
   }
@@ -35,6 +35,10 @@ export class PeopleComponent implements OnInit {
     this.personService.deletePerson(id).subscribe(resp => {
       this.getPeople();
     });
+  }
+
+  searchPeople(form: any) {
+    return this.filterArg = form.value.name;
   }
 
   private calculateAge(bday): number {

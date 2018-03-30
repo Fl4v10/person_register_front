@@ -8,7 +8,7 @@ import { Chart } from 'angular-highcharts';
 })
 export class ChartComponent implements OnInit {
   @ViewChild('chartTarget') chartTarget: ElementRef;
-  @Input() data;
+  @Input() data: any;
 
   rangeOfage = new Chart({
     chart: {
