@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Chart } from 'angular-highcharts';
 
 @Component({
   selector: 'app-chart',
@@ -6,26 +7,34 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  @Input()
-  data: any;
+  @ViewChild('chartTarget') chartTarget: ElementRef;
+  @Input() data;
 
-  public pie_ChartData = [
-    ['Task', 'Hours per Day'],
-    ['Work', 11],
-    ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7]];
-
-  public pie_ChartOptions = {
-    title: 'My Daily Activities',
-    width: 900,
-    height: 500
-  };
+  chart = new Chart({
+    chart: {
+      type: 'pie'
+    },
+    title: {
+      text: 'Relatório por gênero'
+    },
+    credits: {
+      enabled: false
+    },
+    series: [{
+      name: 'Nº de indivíduos',
+      data: [{
+        name: 'Mulheres',
+        y: 4
+      }, {
+        name: 'Homens',
+        y: 6
+      }]
+    }]
+  });
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.data);
   }
-
 }

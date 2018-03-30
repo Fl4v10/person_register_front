@@ -12,6 +12,7 @@ import { PersonService } from './services/person.service';
 import { PeopleComponent } from './people/people.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ChartComponent } from './people/chart/chart.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ChartComponent } from './people/chart/chart.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule
   ],
   providers: [
     PersonService,
