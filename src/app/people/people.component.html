@@ -1,4 +1,4 @@
-<app-chart [data]="list"></app-chart>
+<app-chart *ngIf="list" [data]="list"></app-chart>
 <form #person="ngForm" (ngSubmit)="onSubmit(person)">
   <div class="form-group">
     <label for="nome">Nome:</label>
