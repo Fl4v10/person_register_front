@@ -10,43 +10,15 @@ import { PersonModel } from '../../models/person.model';
 export class ChartComponent implements OnInit {
   @ViewChild('chartTarget') chartTarget: ElementRef;
   @Input() data: PersonModel[];
-  chart: Chart;
-  rangeOfage: Chart;
+  byGenderChart: Chart;
+  byAgeChart: Chart;
+  type = 'pie';
 
   constructor() { }
 
   ngOnInit() {
-    this.rangeOfage = new Chart({
-      chart: {
-        type: 'column'
-      },
-      title: {
-        text: 'Separação por idade'
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: 'Nº de indivíduos',
-        data: this.fillAgeChartData(this.data)
-      }]
-    });
-
-    this.chart = new Chart({
-      chart: {
-        type: 'pie'
-      },
-      title: {
-        text: 'Separação por sexo'
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: 'Nº de indivíduos',
-        data: this.fillGenderChartData(this.data)
-      }]
-    });
+    this.ageData();
+    this.genderData();
   }
 
   fillAgeChartData(data: PersonModel[]) {
@@ -71,27 +43,27 @@ export class ChartComponent implements OnInit {
     for (let i = 0; i < data.length; i++) {
       if (data[i].age > 39) {
         serieData[4].y = serieData[4].y + 1;
-        // break;
+        continue;
       }
 
       if (data[i].age < 10) {
         serieData[0].y = serieData[0].y + 1;
-        // break;
+        continue;
       }
 
       if (data[i].age >= 0 && (data[i].age < 10)) {
         serieData[0].y = serieData[0].y + 1;
-        // break;
+        continue;
       }
 
       if (data[i].age >= 10 && (data[i].age < 20)) {
         serieData[1].y = serieData[1].y + 1;
-        // break;
+        continue;
       }
 
       if (data[i].age >= 20 && (data[i].age < 30)) {
         serieData[2].y = serieData[2].y + 1;
-        // break;
+        continue;
       }
 
       serieData[3].y = serieData[3].y + 1;
@@ -100,29 +72,13 @@ export class ChartComponent implements OnInit {
     return serieData;
   }
 
-  inRange(value, i, j) {
-    if ((value >= i) && (value <= j)) {
-      return true;
-    }
-
-    return false;
-  }
-
   fillGenderChartData(data: PersonModel[]) {
-    const serieData: any = [{
-      name: 'Homens',
-      y: 0
-    }, {
-      name: 'Mulheres',
-      y: 0
-    }];
+    const serieData: any = [
+      { name: 'Homens', y: 0 },
+      { name: 'Mulheres', y: 0 }
+    ];
 
     for (let i = 0; i < data.length; i++) {
-
-      if (data[i].gender) {
-        serieData[0].y = serieData[0].y + 1;
-      }
-
       if (data[i].gender) {
         serieData[0].y = serieData[0].y + 1;
       } else {
@@ -131,5 +87,61 @@ export class ChartComponent implements OnInit {
     }
 
     return serieData;
+  }
+
+  genderData() {
+    this.byGenderChart = new Chart({
+      chart: {
+        type: this.type
+      },
+      title: {
+        text: 'Separação por sexo'
+      },
+      credits: {
+        enabled: false
+      },
+      xAxis: {
+        categories: ['Homens', 'Mulheres']
+      },
+      series: [{
+        name: 'Nº de indivíduos',
+        data: this.fillGenderChartData(this.data)
+      }]
+    });
+  }
+
+  ageData() {
+    this.byAgeChart = new Chart({
+      chart: {
+        type: this.type
+      },
+      title: {
+        text: 'Separação por idade'
+      },
+      credits: {
+        enabled: false
+      },
+      xAxis: {
+        categories: ['0 a 9', '10 a 19', '20 a 29', '30 a 39', 'Maior que 40']
+      },
+      series: [{
+        name: 'Nº de indivíduos',
+        data: this.fillAgeChartData(this.data)
+      }]
+    });
+  }
+
+  chartType(v: boolean) {
+    if (this.type === 'column') {
+      this.type = 'pie';
+    } else {
+      this.type = 'column';
+    }
+
+    if (v) {
+      this.ageData();
+    } else {
+      this.genderData();
+    }
   }
 }

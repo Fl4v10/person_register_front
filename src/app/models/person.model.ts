@@ -10,13 +10,13 @@ export class PersonModel {
     address: AddressModel;
 
     constructor(p: any) {
-        this.id = p.Id ? p.Id : 0;
-        this.age = p.BirthDate ? this.CalculateAge(p.BirthDate) : null;
-        this.birthDate = p.BirthDate ? p.BirthDate : null;
-        this.name = p.Name ? p.Name : '';
-        this.identificationDocument = p.IdentificationDocument ? p.IdentificationDocument : '';
-        this.gender = p.Gender ? p.Gender : null;
-        this.address = p.Address ? p.Address : new AddressModel({});
+        this.id = p.id ? p.id : 0;
+        this.age = p.birthDate ? this.CalculateAge(p.birthDate) : null;
+        this.birthDate = p.birthDate ? p.birthDate : null;
+        this.name = p.name ? p.name : '';
+        this.identificationDocument = p.identificationDocument ? p.identificationDocument : '';
+        this.gender = p.gender ? p.gender : null;
+        this.address = p.address ? p.address : new AddressModel({});
     }
 
     CalculateAge(bday): number {

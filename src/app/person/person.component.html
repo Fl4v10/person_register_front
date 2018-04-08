@@ -9,7 +9,7 @@
             <i class="glyphicon glyphicon-user"></i>
           </span>
           <input type="text" class="form-control" 
-              name="Name" id="Name" placeholder="Nome" [(ngModel)]="person.name" required>
+              name="name" id="name" placeholder="Nome" [(ngModel)]="person.name" required>
         </div>
       </div>
     </div>
@@ -20,8 +20,8 @@
           <span class="input-group-addon">
             <i class="glyphicon glyphicon-user"></i>
           </span>
-          <input type="text" class="form-control" name="IdentificationDocument" 
-              id="IdentificationDocument" placeholder="RG, CPF ou Passaporte" [(ngModel)]="person.identificationDocument" required>
+          <input type="text" class="form-control" name="identificationDocument" 
+              id="identificationDocument" placeholder="RG, CPF ou Passaporte" [(ngModel)]="person.identificationDocument" required>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar"></i>
               </span>
-              <input type="date" name="BirthDate" id="BirthDate" min="1950-01-01" 
+              <input type="date" name="birthDate" id="birthDate" min="1950-01-01" 
                   class="form-control" [(ngModel)]="person.birthDate" required>
             </div>
           </div>
@@ -44,12 +44,12 @@
         <div class="form-check">
           <label for="Gender">Genero</label>
           <br/>
-          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="true" [(ngModel)]="person.gender" checked>
-          <label class="form-check-label" for="Gender">
+          <input class="form-check-input" type="radio" name="gender" id="gender" value="true" [(ngModel)]="person.gender" checked>
+          <label class="form-check-label" for="gender">
             Masculino
           </label>
-          <input class="form-check-input" type="radio" name="Gender" id="Gender" value="false" [(ngModel)]="person.gender">
-          <label class="form-check-label" for="Gender">
+          <input class="form-check-input" type="radio" name="gender" id="gender" value="false" [(ngModel)]="person.gender">
+          <label class="form-check-label" for="gender">
             Feminino
           </label>
         </div>
